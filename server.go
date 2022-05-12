@@ -6,12 +6,12 @@ package main
 import (
 	"encoding/json"
 	"github.com/gin-gonic/gin"
-	"net/http"
-	"log"
-	"os"
-	"math/rand"
-	"time"
 	"io/ioutil"
+	"log"
+	"math/rand"
+	"net/http"
+	"os"
+	"time"
 )
 
 type Quote struct {
@@ -33,7 +33,7 @@ func loadQuotes() []Quote {
 	err = json.Unmarshal(data, &quotes)
 	if err != nil {
 		log.Fatal(err)
-	}	
+	}
 	return quotes
 }
 
@@ -45,10 +45,8 @@ func main() {
 	rand.Seed(time.Now().Unix())
 	quotes := loadQuotes()
 	router := gin.Default()
-	router.GET("/quote", func (c *gin.Context) {
+	router.GET("/quote", func(c *gin.Context) {
 		c.IndentedJSON(http.StatusOK, randomQuote(quotes))
 	})
 	router.Run()
 }
-
-
