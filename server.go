@@ -25,7 +25,7 @@ func loadQuotes() []Quote {
 		log.Fatal(err)
 	}
 	defer file.Close()
-	quotes := make([]Quote, 0, 48391)
+	quotes := make([]Quote, 0, 37044)
 	data, err := ioutil.ReadAll(file)
 	if err != nil {
 		log.Fatal(err)
